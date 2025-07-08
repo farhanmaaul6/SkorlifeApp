@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite Test Calculator App Mobile">
+    <parameter name="url" value="http://127.0.0.1:4723"/>
+    <parameter name="deviceName" value="Xiaomi_Note_11"/>
+    <test name="Firt My Test">
+        <classes>
+            <class name="com.skorlife.LoginFlowTest" />
+            <class name="com.skorlife.Hook"></class>
+        </classes>
+    </test>
+</suite>
