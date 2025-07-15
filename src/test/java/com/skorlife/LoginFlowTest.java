@@ -36,7 +36,7 @@ public class LoginFlowTest extends ExtentReports {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         loginFlow.setLoc();
         test.pass("Enable Location");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        Thread.sleep(7000);
         loginFlow.clickInputNo();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         loginFlow.enterPhoneNo();
@@ -125,6 +125,26 @@ public class LoginFlowTest extends ExtentReports {
                     MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         }
 
+        // ---------- Check Pelajari Lebih Lanjut ----------
+        try {
+            WebElement pelajariLebihLanjut = driver.findElement(
+                    By.xpath("//android.view.View[@content-desc=\"Pelajari lebih lanjut\"]")
+            );
+
+            if (pelajariLebihLanjut.isDisplayed()) {
+                String screenshotPath = Screenshot.captureScreenshot(driver, "PelajariLebihLanjut_Muncul");
+                test.pass("Pelajari lebih lanjut muncul",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            } else {
+                String screenshotPath = Screenshot.captureScreenshot(driver, "PelajariLebihLanjut_TidakMuncul");
+                test.fail("Pelajari lebih lanjut tidak muncul",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            }
+        } catch (NoSuchElementException e) {
+            String screenshotPath = Screenshot.captureScreenshot(driver, "PelajariLebihLanjut_NotFound");
+            test.fail("Pelajari lebih lanjut tidak ditemukan",
+                    MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+        }
 
         /*loginFlow.setStatusKol();
         test.pass("Click Status KOL");

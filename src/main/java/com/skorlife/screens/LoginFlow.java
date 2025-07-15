@@ -27,7 +27,7 @@ public class LoginFlow {
     private By UpdateInfo = AppiumBy.accessibilityId("Update Info");
     private By simpanInfo = AppiumBy.accessibilityId("Simpan");
     private By previousButton = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.Button");
-    private By logOutButton = AppiumBy.xpath("//android.widget.Button");
+    private By logOutButton = AppiumBy.xpath("//android.view.View[@content-desc=\"Keluar\"]");
     private By pasHouses = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Pashouses\n" +
             "Kunjungi properti impianmu\"]");
     private By goroGoro = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"GORO\n" +
@@ -58,6 +58,7 @@ public class LoginFlow {
     private By laporanInbox = AppiumBy.xpath("//android.view.View[@content-desc=\"Laporan\n" +
             "Tab 2 of 2\"]");
     private By backOnNotifications = AppiumBy.xpath("//android.widget.Button");
+    private By informasiPersonal = AppiumBy.xpath("//android.view.View[@content-desc=\"Informasi Personal\"]");
 
 
     public LoginFlow(AndroidDriver driver) {
@@ -222,6 +223,58 @@ public class LoginFlow {
 
     public void swipeList(String direction) {
         WebElement itemElement = driver.findElement(learnSkorlife);
+        Rectangle rectangle = itemElement.getRect();
+
+        int elementX = rectangle.getX();
+        int elementY = rectangle.getY();
+        int elementWidth = rectangle.getWidth();
+        int elementHeight = rectangle.getHeight();
+
+        // titik awal jari kita mau ada di tengah
+        int startX = elementX + (elementWidth / 2);
+        int startY = elementY + (elementHeight / 2);
+        int endX = startX;
+        int endY = startY;
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
+        Sequence swipe = new Sequence(finger, 0);
+
+        int swipeDistance = 3000;
+
+        switch (direction.toLowerCase()) {
+            case "up":
+                endY = startY - swipeDistance;
+                break;
+            case "down":
+                endY = startY + swipeDistance;
+                break;
+            case "left":
+                endX = startX - swipeDistance;
+                break;
+            case "right":
+                endX = startX + swipeDistance;
+                break;
+            default:
+                endX = startX - swipeDistance;
+        }
+
+        // titik sentuh awal ibu jari
+        swipe.addAction(finger.createPointerMove(Duration.ofSeconds(1), PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.MIDDLE.asArg()));
+
+        // pergeseran ibu jari sampai ke titik akhir
+        swipe.addAction(finger.createPointerMove(
+                Duration.ofMillis(1000),
+                PointerInput.Origin.viewport(),
+                endX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.MIDDLE.asArg()));
+
+        // eksekusi
+        driver.perform(Collections.singletonList(swipe));
+    }
+
+    public void swipeLogout(String direction) {
+        WebElement itemElement = driver.findElement(informasiPersonal);
         Rectangle rectangle = itemElement.getRect();
 
         int elementX = rectangle.getX();

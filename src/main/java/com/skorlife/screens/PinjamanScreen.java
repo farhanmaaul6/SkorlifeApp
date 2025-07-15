@@ -48,4 +48,5 @@ public class PinjamanScreen {
         driver.findElement(collections).click();
     }
 
+
 }
