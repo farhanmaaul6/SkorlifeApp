@@ -16,22 +16,11 @@ import java.time.Duration;
 
 public class LoginFlowTest extends ExtentReports {
     AndroidDriver driver ;
-    UiAutomator2Options options;
     LoginFlow loginFlow;
 
     @BeforeClass
     public void setup() throws MalformedURLException {
-        options = new UiAutomator2Options();
-        options.setCapability("platformName","Android");
-        options.setCapability("appium:deviceName","Xiaomi_Note_11");
-        options.setCapability("appium:appPackage","com.skorlife.score");
-        options.setCapability("appium:appActivity",".MainActivity");
-
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.hideKeyboard();
-
+        driver = DriverSingleton.getDriver();
         loginFlow = new LoginFlow(driver);
     }
 
@@ -134,9 +123,5 @@ public class LoginFlowTest extends ExtentReports {
         test.pass("Swipe Up Page");
         }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
 }
 

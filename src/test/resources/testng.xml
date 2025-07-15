@@ -5,9 +5,10 @@
     <parameter name="deviceName" value="Xiaomi_Note_11"/>
     <test name="My First Test">
         <classes>
-            <class name="com.skorlife.LoginFlowTest" />
-            <class name="com.skorlife.ExtentReports" />
             <class name="com.skorlife.Hook"/>
+            <class name="com.skorlife.LoginFlowTest" />
+            <class name="com.skorlife.PinjamanTest"/>
+            <class name="com.skorlife.ExtentReports" />
         </classes>
     </test>
 </suite>
