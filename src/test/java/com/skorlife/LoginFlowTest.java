@@ -6,6 +6,9 @@ import com.aventstack.extentreports.Status;
 import com.skorlife.screens.LoginFlow;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -78,10 +81,52 @@ public class LoginFlowTest extends ExtentReports {
     }
 
     @Test(priority = 3)
-    public void dashboardTest () throws InterruptedException {
+    public void dashboardTest() throws InterruptedException {
         Thread.sleep(5000);
         ExtentTest test = ExtentReports.getExtent().createTest("Dashboard Functionality Test");
-        loginFlow.setStatusKol();
+
+        // ---------- Check Status KOL ----------
+        try {
+            WebElement statusKolElement = driver.findElement(By.xpath("//android.view.View[@content-desc='Scrim']"));
+
+            if (statusKolElement.isDisplayed()) {
+                String screenshotPath = Screenshot.captureScreenshot(driver, "StatusKOL_Muncul");
+                test.pass("Status KOL muncul",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            } else {
+                String screenshotPath = Screenshot.captureScreenshot(driver, "StatusKOL_TidakMuncul");
+                test.fail("Status KOL tidak muncul",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            }
+        } catch (NoSuchElementException e) {
+            String screenshotPath = Screenshot.captureScreenshot(driver, "StatusKOL_NotFound");
+            test.fail("Status KOL tidak ditemukan",
+                    MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+        }
+
+        // ---------- Check Total Pinjaman ----------
+        try {
+            WebElement totalPinjamanElement = driver.findElement(
+                    By.xpath("//android.widget.ImageView[contains(@content-desc, 'TOTAL PINJAMAN')]")
+            );
+
+            if (totalPinjamanElement.isDisplayed()) {
+                String screenshotPath = Screenshot.captureScreenshot(driver, "TotalPinjaman_Muncul");
+                test.pass("Total pinjaman muncul",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            } else {
+                String screenshotPath = Screenshot.captureScreenshot(driver, "TotalPinjaman_TidakMuncul");
+                test.fail("Total pinjaman tidak muncul",
+                        MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            }
+        } catch (NoSuchElementException e) {
+            String screenshotPath = Screenshot.captureScreenshot(driver, "TotalPinjaman_NotFound");
+            test.fail("Total pinjaman tidak ditemukan",
+                    MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+        }
+
+
+        /*loginFlow.setStatusKol();
         test.pass("Click Status KOL");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         loginFlow.setCloseStatusKolPage();
@@ -102,7 +147,7 @@ public class LoginFlowTest extends ExtentReports {
         loginFlow.setPelajariLebihLanjutButton();
         test.pass("Click Pelajari Lebih Lanjut Button");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        loginFlow.setBeranda();
+        */loginFlow.setBeranda();
         test.pass("Click Beranda");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         loginFlow.clickCredit();
@@ -117,6 +162,14 @@ public class LoginFlowTest extends ExtentReports {
         loginFlow.clickForYou();
         test.pass("Click Leadgen Untuk Kamu");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        loginFlow.setNotifications();
+        test.pass("Click Notifikasi");
+        loginFlow.setNotifikasiInbox();
+        test.pass("Click Notifikasi di Inbox");
+        loginFlow.setLaporanInbox();
+        test.pass("Click Laporan di Inbox");
+        loginFlow.setBackOnInbox();
+        test.pass("Kembali ke Dashboard");
         loginFlow.swipeHeader("up");
         test.pass("Swipe Down Page");
         loginFlow.swipeList("down");

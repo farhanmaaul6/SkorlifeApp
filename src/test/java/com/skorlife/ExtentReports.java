@@ -17,8 +17,8 @@ public class ExtentReports {
         extent = new com.aventstack.extentreports.ExtentReports();
         extent.attachReporter(spark);
 
-        extent.setSystemInfo("Environment", "Quality Assurance");
-        extent.setSystemInfo("Tester Name", "Your Name");
+        extent.setSystemInfo("Environment", "Quality Assurance Engineer");
+        extent.setSystemInfo("Tester Name", "Farhan");
     }
 
     @AfterSuite

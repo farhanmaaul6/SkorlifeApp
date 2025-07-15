@@ -32,11 +32,11 @@ public class LoginFlow {
             "Kunjungi properti impianmu\"]");
     private By goroGoro = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"GORO\n" +
             "Partner GORO untuk investasi\"]");
-    private By creditCard = AppiumBy.xpath("//android.view.View[@content-desc=\"KARTU KREDIT\"]");
-    private By loan = AppiumBy.xpath("//android.view.View[@content-desc=\"PINJAMAN\"]");
-    private By other = AppiumBy.xpath("//android.view.View[@content-desc=\"LAINNYA\"]");
-    private By forYou = AppiumBy.xpath("//android.view.View[@content-desc=\"UNTUK ANDA\"]");
-    private By header = AppiumBy.xpath("//android.view.View[@content-desc=\"Rekomendasi untukmu\"]");
+    private By creditCard = AppiumBy.xpath("//android.view.View[@content-desc=\"Kartu\"]");
+    private By loan = AppiumBy.xpath("//android.view.View[@content-desc=\"Pinjaman\"]");
+    private By other = AppiumBy.xpath("//android.view.View[@content-desc=\"Lainnya\"]");
+    private By forYou = AppiumBy.xpath("//android.view.View[@content-desc=\"Rekomendasi\"]");
+    private By header = AppiumBy.xpath("//android.view.View[@content-desc=\"Berdasarkan kebutuhan dan skor kredit. Bangun riwayat kredit yang sehat.\"]");
     private By pinjaman = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Pinjaman\"]");
     private By statusKol = AppiumBy.xpath("//android.view.View[@content-desc=\"KOL 1\n" +
             "Lancar\n" +
@@ -49,7 +49,16 @@ public class LoginFlow {
     private By closePengajuanPinjamanButton = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Oke, tutup\"]");
     private By pelajariLebihLanjutButton = AppiumBy.xpath("//android.view.View[@content-desc=\"Pelajari lebih lanjut\"]");
     private By beranda = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Beranda\"]");
-    private By learnSkorlife = AppiumBy.xpath("//android.view.View[@content-desc=\"LEARN WITH SKORLIFE\"]");
+    private By learnSkorlife = AppiumBy.xpath("//android.view.View[@content-desc=\"Apa itu Fintech? Memahami Revolusi di Dunia Keuangan\n" +
+            "Skorlife di Paylater\n" +
+            "5 min read\"]");
+    private By notifications = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View");
+    private By notifikasiInbox = AppiumBy.xpath("//android.view.View[@content-desc=\"Notifikasi\n" +
+            "Tab 1 of 2\"]");
+    private By laporanInbox = AppiumBy.xpath("//android.view.View[@content-desc=\"Laporan\n" +
+            "Tab 2 of 2\"]");
+    private By backOnNotifications = AppiumBy.xpath("//android.widget.Button");
+
 
     public LoginFlow(AndroidDriver driver) {
         this.driver = driver;
@@ -68,7 +77,7 @@ public class LoginFlow {
     }
 
     public void enterPhoneNo() {
-        driver.findElement(enterNo).sendKeys("81284929984");
+        driver.findElement(enterNo).sendKeys("836646464646");
     }
 
     public void lanjutkanButton() {
@@ -262,5 +271,22 @@ public class LoginFlow {
         // eksekusi
         driver.perform(Collections.singletonList(swipe));
     }
+
+    public void setNotifications() {
+        driver.findElement(notifications).click();
+    }
+
+    public void setNotifikasiInbox() {
+        driver.findElement(notifikasiInbox).click();
+    }
+
+    public void setLaporanInbox() {
+        driver.findElement(laporanInbox).click();
+    }
+
+    public void setBackOnInbox() {
+        driver.findElement(backOnNotifications).click();
+    }
+
 
 }
