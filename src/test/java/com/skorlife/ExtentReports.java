@@ -10,9 +10,9 @@ public class ExtentReports {
 
     @BeforeSuite
     public void reportSetup() {
-        ExtentSparkReporter spark = new ExtentSparkReporter("target/extent-report.html");
-        spark.config().setReportName("Skorlife Test Report");
-        spark.config().setDocumentTitle("Automation Results");
+        ExtentSparkReporter spark = new ExtentSparkReporter("target/Skorlife_Automation_Test_Report.html");
+        spark.config().setReportName("Skorlife Automation Test Report");
+        spark.config().setDocumentTitle("Skorlife Automation Test Report");
 
         extent = new com.aventstack.extentreports.ExtentReports();
         extent.attachReporter(spark);

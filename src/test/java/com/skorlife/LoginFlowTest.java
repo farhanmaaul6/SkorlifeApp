@@ -27,20 +27,24 @@ public class LoginFlowTest extends ExtentReports {
         loginFlow = new LoginFlow(driver);
     }
 
+
     @Test(priority = 1)
     public void setSignInUsingRegisteredNumber() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("Sign In Using a Registered Phone Number");
+        ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Sign In Using a Registered Phone Number");
         test.info("Taps Skor Apps on Mobile");
-        loginFlow.setNotif();
         String setNotifScreenshot = Screenshot.captureScreenshot(driver, "Enable_Notifications");
         test.pass("Enable Notifications",
                 MediaEntityBuilder.createScreenCaptureFromPath(setNotifScreenshot).build());
-        loginFlow.setLocation();
+        loginFlow.setNotif();
+        Thread.sleep(2000);
         String setLocationScreenshot = Screenshot.captureScreenshot(driver, "Enable_Location");
         test.pass("Enable Location",
                 MediaEntityBuilder.createScreenCaptureFromPath(setLocationScreenshot).build());
+        loginFlow.setLocation();
         Thread.sleep(12000);
-        test.pass("Waiting_for_All Animations");
+        String setAnimation = Screenshot.captureScreenshot(driver, "Waiting_For_All_Animations");
+        test.pass("Waiting for All Animations",
+                MediaEntityBuilder.createScreenCaptureFromPath(setAnimation).build());
         loginFlow.clickInputNo();
         String clickInputNoScreenshot = Screenshot.captureScreenshot(driver, "Tap_Phone_Number_Input_Field");
         test.pass("Tap Phone Number Input Field",
@@ -53,33 +57,25 @@ public class LoginFlowTest extends ExtentReports {
         String lanjutkanButtonScreenshot = Screenshot.captureScreenshot(driver, "Click_Lanjutkan_Button");
         test.pass("Click Lanjutkan Button",
                 MediaEntityBuilder.createScreenCaptureFromPath(lanjutkanButtonScreenshot).build());
-        test.info("User Enter a Valid PIN");
-        loginFlow.clickButtonOne();
-        String clickButtonOneScreenshot = Screenshot.captureScreenshot(driver, "Tap_1");
-        test.pass("Tap 1",
-                MediaEntityBuilder.createScreenCaptureFromPath(clickButtonOneScreenshot).build());
-        loginFlow.clickButtonTwo();
-        String clickButtonTwoScreenshot = Screenshot.captureScreenshot(driver, "Tap_2");
-        test.pass("Tap 2",
-                MediaEntityBuilder.createScreenCaptureFromPath(clickButtonTwoScreenshot).build());
-        loginFlow.clickButtonThree();
-        String clickButtonThreeScreenshot = Screenshot.captureScreenshot(driver, "Tap_3");
-        test.pass("Tap 3",
-                MediaEntityBuilder.createScreenCaptureFromPath(clickButtonThreeScreenshot).build());
-        Thread.sleep(3000);
-        String succesfullyLogintoDashboardPage = Screenshot.captureScreenshot(driver, "Dashboard_Page");
-        test.pass("Succesfully Login to Dashboard Page",
+        String succesfullyLogintoDashboardPage = Screenshot.captureScreenshot(driver, "PIN_code_Page");
+        test.pass("Succesfully navigate to PIN Code Page",
                 MediaEntityBuilder.createScreenCaptureFromPath(succesfullyLogintoDashboardPage).build());
         driver.terminateApp("com.skorlife.score");
         driver.activateApp("com.skorlife.score");
     }
 
     @Test(priority = 2)
-    public void setUlangLagi() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("Repeat");
-        test.info("Back to Skorlife");
+    public void enterValidPinCode() throws InterruptedException {
+        ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] User Enter A Valid PIN Code");
+        test.info("Taps Skor Apps on Mobile");
+        Thread.sleep(4000);
+        String backOnPin = Screenshot.captureScreenshot(driver, "Back_to_Animations_Page");
+        test.pass("Back To Animations Page", MediaEntityBuilder.createScreenCaptureFromPath(backOnPin).build());
         loginFlow.setBackOnPin();
-        test.pass("Waiting for All Animations");
+        Thread.sleep(12000);
+        String setAnimation = Screenshot.captureScreenshot(driver, "Waiting_For_All_Animations");
+        test.pass("Waiting for All Animations",
+                MediaEntityBuilder.createScreenCaptureFromPath(setAnimation).build());
         loginFlow.clickInputNo();
         String clickInputNoScreenshot = Screenshot.captureScreenshot(driver, "Tap_Phone_Number_Input_Field");
         test.pass("Tap Phone Number Input Field",

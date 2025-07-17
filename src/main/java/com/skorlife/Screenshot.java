@@ -14,7 +14,9 @@ public class Screenshot {
 
     public static String captureScreenshot(WebDriver driver, String screenshotName) {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filePath = "target/screenshots/" + screenshotName + "_" + timestamp + ".png";
+        String fileName = screenshotName + "_" + timestamp + ".png";
+        String folderPath = "target/screenshots/";
+        String filePath = folderPath + fileName;
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File destination = new File(filePath);
@@ -25,6 +27,8 @@ public class Screenshot {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return filePath;
+
+        // Return the path relative to the report location
+        return "screenshots/" + fileName;
     }
 }
