@@ -14,11 +14,12 @@ import java.util.Collections;
 public class LoginFlow {
     private AndroidDriver driver;
     private By notif = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button");
-    private By loc = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
+    private By location = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
     private By cobaLagi = AppiumBy.accessibilityId("Coba lagi");
     private By inputNo = AppiumBy.xpath("//android.view.View[@content-desc=\"\uD83C\uDDEE\uD83C\uDDE9 +62\n" +
             "Masukkan nomor HP-mu\"]");
     private By enterNo = AppiumBy.xpath("//android.widget.EditText");
+    private By backOnPin = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View");
     private By lanjutkan = AppiumBy.accessibilityId("Lanjutkan");
     private By buttonOne = AppiumBy.accessibilityId("1");
     private By buttonTwo = AppiumBy.accessibilityId("2");
@@ -48,7 +49,7 @@ public class LoginFlow {
     private By pengajuanPinjaman = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Tidak ada pengajuan pinjaman baru atas namamu.\"]");
     private By closePengajuanPinjamanButton = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Oke, tutup\"]");
     private By pelajariLebihLanjutButton = AppiumBy.xpath("//android.view.View[@content-desc=\"Pelajari lebih lanjut\"]");
-    private By beranda = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Beranda\"]");
+    private By beranda = AppiumBy.accessibilityId("Beranda");
     private By learnSkorlife = AppiumBy.xpath("//android.view.View[@content-desc=\"Apa itu Fintech? Memahami Revolusi di Dunia Keuangan\n" +
             "Skorlife di Paylater\n" +
             "5 min read\"]");
@@ -60,7 +61,6 @@ public class LoginFlow {
     private By backOnNotifications = AppiumBy.xpath("//android.widget.Button");
     private By informasiPersonal = AppiumBy.xpath("//android.view.View[@content-desc=\"Informasi Personal\"]");
 
-
     public LoginFlow(AndroidDriver driver) {
         this.driver = driver;
     }
@@ -69,8 +69,16 @@ public class LoginFlow {
         driver.findElement(notif).click();
     }
 
-    public void setLoc() {
-        driver.findElement(loc).click();
+    public void setBackOnPin() {
+        driver.findElement(backOnPin).click();
+    }
+
+    public String dashboardPageTitle() {
+        return driver.findElement(beranda).getText();
+    }
+
+    public void setLocation() {
+        driver.findElement(location).click();
     }
 
     public void clickInputNo() {
@@ -87,13 +95,16 @@ public class LoginFlow {
 
     public void clickButtonOne() {
         driver.findElement(buttonOne).click();
+        driver.findElement(buttonOne).click();
     }
 
     public void clickButtonTwo() {
         driver.findElement(buttonTwo).click();
+        driver.findElement(buttonTwo).click();
     }
 
     public void clickButtonThree() {
+        driver.findElement(buttonThree).click();
         driver.findElement(buttonThree).click();
     }
 

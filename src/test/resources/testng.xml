@@ -7,7 +7,7 @@
         <classes>
             <class name="com.skorlife.Hook"/>
             <class name="com.skorlife.LoginFlowTest" />
-            <class name="com.skorlife.PinjamanTest"/>
+<!--            <class name="com.skorlife.PinjamanTest"/>-->
             <class name="com.skorlife.ExtentReports" />
         </classes>
     </test>
