@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 public class PinScreen {
     AndroidDriver driver;
 
+    //Number Description
     private By btnOne = AppiumBy.accessibilityId("1");
     private By btnTwo = AppiumBy.accessibilityId("2");
     private By btnThree = AppiumBy.accessibilityId("3");

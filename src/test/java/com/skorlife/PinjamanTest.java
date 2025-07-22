@@ -1,8 +1,9 @@
 package com.skorlife;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.skorlife.screens.LoginFlow;
+import com.skorlife.screens.DashboardScreen;
 import com.skorlife.screens.PinjamanScreen;
+import com.skorlife.screens.ProfileScreen;
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,13 +14,16 @@ import java.time.Duration;
 public class PinjamanTest extends ExtentReports{
     AndroidDriver driver ;
     PinjamanScreen pinjamanScreen;
-    LoginFlow loginFlow;
+    ProfileScreen profileScreen;
+    DashboardScreen dashboardScreen;
+
 
     @BeforeClass
     public void setup() throws MalformedURLException {
         driver = DriverSingleton.getDriver();
         pinjamanScreen = new PinjamanScreen(driver);
-        loginFlow = new LoginFlow(driver);
+        profileScreen = new ProfileScreen(driver);
+        dashboardScreen = new DashboardScreen(driver);
     }
 
     @Test(priority = 1)
@@ -47,13 +51,13 @@ public class PinjamanTest extends ExtentReports{
         pinjamanScreen.clickCollection();
         test.pass("Click Collection");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        loginFlow.setBeranda();
+        dashboardScreen.setBtnBeranda();
         test.pass("Click Beranda");
-        loginFlow.clickProfilePage();
+        dashboardScreen.setBtnProfilePage();
         test.pass("Click Profile Page");
-        loginFlow.swipeLogout("Up");
+        profileScreen.swipeLogout("Up");
         test.pass("Scroll Down Page");
-        loginFlow.clickLogoutButton();
+        profileScreen.setBtnLogout();
         test.pass("Click Logout Button");
     }
 

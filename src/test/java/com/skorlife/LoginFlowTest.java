@@ -2,37 +2,33 @@ package com.skorlife;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
-import com.skorlife.screens.LoginFlow;
+import com.skorlife.screens.DashboardScreen;
 import com.skorlife.screens.LoginScreen;
-import com.skorlife.screens.NotificationsScreen;
+import com.skorlife.screens.PermissionScreen;
 import com.skorlife.screens.PinScreen;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Driver;
-import java.time.Duration;
 
 public class LoginFlowTest extends ExtentReports {
     AndroidDriver driver ;
-    NotificationsScreen notificationsScreen;
+    PermissionScreen permissionScreen;
     LoginScreen loginScreen;
     PinScreen pinScreen;
+    DashboardScreen dashboardScreen;
 
     @BeforeClass
     public void setupClass() throws MalformedURLException {
         driver = DriverSingleton.getDriver();
 
-        notificationsScreen = new NotificationsScreen(driver);
+        permissionScreen = new PermissionScreen(driver);
         loginScreen = new LoginScreen(driver);
         pinScreen = new PinScreen(driver);
+        dashboardScreen = new DashboardScreen(driver);
     }
 
 
@@ -43,12 +39,12 @@ public class LoginFlowTest extends ExtentReports {
         String setNotificationSs = Screenshot.captureScreenshot(driver, "Enable_Notifications");
         test.pass("Enable Notifications",
                 MediaEntityBuilder.createScreenCaptureFromPath(setNotificationSs).build());
-        notificationsScreen.setBtnNotification();
+        permissionScreen.setBtnNotification();
         Thread.sleep(2000);
         String setLocationSs = Screenshot.captureScreenshot(driver, "Enable_Location");
         test.pass("Enable Location",
                 MediaEntityBuilder.createScreenCaptureFromPath(setLocationSs).build());
-        notificationsScreen.setBtnLocation();
+        permissionScreen.setBtnLocation();
         Thread.sleep(12000);
         String setAnimationSs = Screenshot.captureScreenshot(driver, "Waiting_For_All_Animations");
         test.pass("Waiting for All Animations",
@@ -260,8 +256,26 @@ public class LoginFlowTest extends ExtentReports {
         driver.activateApp("com.skorlife.score");
     }
 
-
-
+//    --------- DONT DELETE CODE BELOW !!! -------
+//    //---------- Check Status KOL ----------
+//        try {
+//        WebElement statusKolElement = driver.findElement(By.xpath("//android.view.View[@content-desc='Scrim']"));
+//
+//        if (statusKolElement.isDisplayed()) {
+//            String screenshotPath = Screenshot.captureScreenshot(driver, "StatusKOL_Muncul");
+//            test.pass("Status KOL muncul",
+//                    MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+//            dashboardScreen.setKolStatus();
+//        } else {
+//            String screenshotPath = Screenshot.captureScreenshot(driver, "StatusKOL_TidakMuncul");
+//            test.fail("Status KOL tidak muncul",
+//                    MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+//        }
+//    } catch (NoSuchElementException e) {
+//        String screenshotPath = Screenshot.captureScreenshot(driver, "StatusKOL_NotFound");
+//        test.fail("Status KOL tidak ditemukan",
+//                MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+//    }
 
 
 //    @Test(priority = 2)
