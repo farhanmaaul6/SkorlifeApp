@@ -3,11 +3,12 @@
 <suite name="Suite Test Calculator App Mobile">
     <parameter name="url" value="http://127.0.0.1:4723"/>
     <parameter name="deviceName" value="Xiaomi_Note_11"/>
-    <test name="My First Test">
+    <test name="Skorlife App Test">
         <classes>
             <class name="com.skorlife.Hook"/>
             <class name="com.skorlife.LoginFlowTest" />
-<!--            <class name="com.skorlife.PinjamanTest"/>-->
+            <class name="com.skorlife.ProfileScreenTest"/>
+            <!--            <class name="com.skorlife.PinjamanTest"/>-->
             <class name="com.skorlife.ExtentReports" />
         </classes>
     </test>

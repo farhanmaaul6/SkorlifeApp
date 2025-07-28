@@ -8,12 +8,17 @@ public class PermissionScreen {
     AndroidDriver driver ;
 
     //All Permissions
+    private By btnCamera = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
     private By btnNotification = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button");
     private By btnLocation = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
     private By btnCobaLagi = AppiumBy.accessibilityId("Coba lagi");
 
     public PermissionScreen(AndroidDriver driver) {
         this.driver = driver;
+    }
+
+    public void setBtnCamera() {
+        driver.findElement(btnCamera).click();
     }
 
     public void setBtnNotification() {
@@ -27,6 +32,7 @@ public class PermissionScreen {
     public void setBtnCobaLagi() {
         driver.findElement(btnCobaLagi).click();
     }
+
 
 
 

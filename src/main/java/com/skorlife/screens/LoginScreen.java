@@ -11,6 +11,9 @@ public class LoginScreen {
             "Masukkan nomor HP-mu\"]");
     private By btnEnterNumber = AppiumBy.xpath("//android.widget.EditText");
     private By btnLanjutkan = AppiumBy.accessibilityId("Lanjutkan");
+    private By txtBtnKetentuanLayanan = AppiumBy.xpath("//android.view.View[@content-desc=\"Ketentuan Layanan \"]");
+    private By txtBtnKebijakanPrivasi = AppiumBy.xpath("//android.view.View[@content-desc=\"Kebijakan Privasi \"]");
+
 
     public LoginScreen (AndroidDriver driver) {
         this.driver = driver;
@@ -38,6 +41,14 @@ public class LoginScreen {
 
     public void setBtnLanjutkan() {
         driver.findElement(btnLanjutkan).click();
+    }
+
+    public void setTxtBtnKetentuanLayanan() {
+        driver.findElement(txtBtnKetentuanLayanan).click();
+    }
+
+    public void setTxtBtnKebijakanPrivasi() {
+        driver.findElement(txtBtnKebijakanPrivasi).click();
     }
 
 
