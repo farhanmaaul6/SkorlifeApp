@@ -1,12 +1,14 @@
 package com.skorlife.screens;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.AppiumExecutionMethod;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import sun.net.ApplicationProxy;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -17,20 +19,27 @@ public class DashboardScreen {
     private By btnProfilePage = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]");
     private By btnNotifications = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View");
     //Tab Bar
-    private By tbCreditCard = AppiumBy.xpath("//android.view.View[@content-desc=\"Kartu\"]");
+    private By tbCard = AppiumBy.xpath("//android.view.View[@content-desc=\"Kartu\"]");
     private By tbLoan = AppiumBy.xpath("//android.view.View[@content-desc=\"Pinjaman\"]");
     private By tbOther = AppiumBy.xpath("//android.view.View[@content-desc=\"Lainnya\"]");
     private By tbForYou = AppiumBy.xpath("//android.view.View[@content-desc=\"Rekomendasi\"]");
-    private By tbPinjaman = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Pinjaman\"]");
 
     private By txtHeader = AppiumBy.xpath("//android.view.View[@content-desc=\"Berdasarkan kebutuhan dan skor kredit. Bangun riwayat kredit yang sehat.\"]");
     private By kolStatus = AppiumBy.xpath("//android.view.View[@content-desc=\"KOL 1\n" +
-            "Lancar\n" +
-            "\uD83D\uDD25 1\"]");
-    private By pengajuanPinjaman = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Tidak ada pengajuan pinjaman baru atas namamu.\"]");
-    private By totalPinjaman = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"TOTAL PINJAMAN\n" +
-            "Rp1.530.493\"]");
+            "Lancar\"]");
+    private By btnCloseKolStatus = AppiumBy.xpath("//android.view.View[@content-desc=\"Scrim\"]");
+    private By btnCreditScore = AppiumBy.xpath("//android.view.View[@content-desc=\"486\n" +
+            "Risiko Tinggi\"]");
+    private By btnCloseCreditScore = AppiumBy.xpath("//android.view.View[@content-desc=\"Scrim\"]");
+    private By txtBtnTotalLoan = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"TOTAL PINJAMAN\n" +
+            "Rp1.350.678\"]");
+    private By btnCloseTotalLoan = AppiumBy.xpath("//android.view.View[@content-desc=\"Total Pinjaman\"]/android.view.View[2]");
+    private By txtBtnActiveStatus = AppiumBy.xpath("//android.view.View[@content-desc=\"30 hari\"]");
+    private By btnCloseActiveStatus = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Oke, tutup\"]");
+    private By txtBtnSubmission = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Tidak ada pengajuan pinjaman baru atas namamu.\"]");
+    private By btnCloseSubmission = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Oke, tutup\"]");
     private By btnPelajariLebihLanjut = AppiumBy.xpath("//android.view.View[@content-desc=\"Pelajari lebih lanjut\"]");
+    private By btnBackOnPinjaman = AppiumBy.xpath("//android.widget.Button");
     private By btnBeranda = AppiumBy.accessibilityId("Beranda");
     private By txtLearnSkorlife = AppiumBy.xpath("//android.view.View[@content-desc=\"Apa itu Fintech? Memahami Revolusi di Dunia Keuangan\n" +
             "Skorlife di Paylater\n" +
@@ -52,12 +61,8 @@ public class DashboardScreen {
         driver.findElement(tbForYou).click();
     }
 
-    public void setTbPinjaman() {
-        driver.findElement(tbPinjaman).click();
-    }
-
-    public void setTbCreditCard() {
-        driver.findElement(tbCreditCard).click();
+    public void setTbCard() {
+        driver.findElement(tbCard).click();
     }
 
     public void setTbLoan() {
@@ -72,17 +77,49 @@ public class DashboardScreen {
         driver.findElement(kolStatus).click();
     }
 
-    public void setTotalPinjaman() {
-        driver.findElement(totalPinjaman).click();
+    public void setBtnCloseKolStatus() {
+        driver.findElement(btnCloseKolStatus).click();
     }
 
-    public void setPengajuanPinjaman() {
-        driver.findElement(pengajuanPinjaman).click();
+    public void setBtnCreditScore() {
+        driver.findElement(btnCreditScore).click();
+    }
+
+    public void setBtnCloseCreditScore() {
+        driver.findElement(btnCloseCreditScore).click();
+    }
+
+    public void setTxtBtnTotalLoan() {
+        driver.findElement(txtBtnTotalLoan).click();
+    }
+
+    public void setBtnCloseTotalLoan() {
+        driver.findElement(btnCloseTotalLoan).click();
+    }
+
+    public void setTxtBtn30Hari() {
+        driver.findElement(txtBtnActiveStatus).click();
+    }
+
+    public void setBtnCloseActiveStatus() {
+        driver.findElement(btnCloseActiveStatus).click();
+    }
+
+    public void setTxtBtnSubmission(){
+        driver.findElement(txtBtnSubmission).click();
+    }
+
+    public void setBtnCloseSubmission() {
+        driver.findElement(btnCloseSubmission).click();
     }
 
 
     public void setBtnPelajariLebihLanjut() {
         driver.findElement(btnPelajariLebihLanjut).click();
+    }
+
+    public void setBtnBackOnPinjaman() {
+        driver.findElement(btnBackOnPinjaman).click();
     }
 
     public void setBtnBeranda() {

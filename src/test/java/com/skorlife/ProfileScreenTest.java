@@ -19,7 +19,7 @@ public class ProfileScreenTest {
     OtpScreen otpScreen;
 
     @BeforeClass
-    public void setupClass() throws MalformedURLException {
+    public void setupProfileTest() throws MalformedURLException {
         driver = DriverSingleton.getDriver();
 
         permissionScreen = new PermissionScreen(driver);
@@ -34,6 +34,8 @@ public class ProfileScreenTest {
     @Test(priority = 1)
     public void informasiPribadi() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Informasi Pribadi on Profile Screen");
+        String userOnDashboardPage = Screenshot.captureScreenshot(driver, "User_On_Dashboard_Page");
+        test.info("User On Dashboard Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnDashboardPage).build());
         dashboardScreen.setBtnProfilePage();
         Thread.sleep(2000);
         String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Tap Profile Page ");
@@ -48,8 +50,8 @@ public class ProfileScreenTest {
     public void riwayatPembayaran() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Riwayat Pembayaran on Profile Screen");
         profileScreen.setBtnBack();
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back To Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setBtnRiwayatPembayaran();
         Thread.sleep(2000);
         String btnRiwayatPembayaranSs = Screenshot.captureScreenshot(driver, "Tap Riwayat Pembayaran Button");
@@ -62,8 +64,8 @@ public class ProfileScreenTest {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Informasi Pribadi on Profile Screen");
         profileScreen.setBtnBack();
         Thread.sleep(2000);
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back To Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setBtnLaporanKredit();
         Thread.sleep(2000);
         String btnLaporanKredit = Screenshot.captureScreenshot(driver, "Tap Laporan Kredit Page ");
@@ -74,8 +76,8 @@ public class ProfileScreenTest {
     public void emailTambahan() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Email Tambahan on Profile Screen");
         profileScreen.setDismiss();
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back To Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setBtnEmailTambahan();
         Thread.sleep(2000);
         String btnEmailTambahanSs = Screenshot.captureScreenshot(driver, "Tap Email Tambahan Button");
@@ -87,8 +89,8 @@ public class ProfileScreenTest {
     public void resetPin() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Reset PIN on Profile Screen");
         profileScreen.setBtnBack();
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back To Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setBtnResetPin();
         Thread.sleep(2000);
         String btnResetPinSs = Screenshot.captureScreenshot(driver, "Tap Reset PIN Button");
@@ -100,6 +102,8 @@ public class ProfileScreenTest {
     public void hubungiSkorlife() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Hubungi Skorlife on Profile Screen");
         otpScreen.setBtnBack();
+        String userOnDashboardPage = Screenshot.captureScreenshot(driver, "User_On_Dashboard_Page");
+        test.info("User On Dashboard Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnDashboardPage).build());
         Thread.sleep(2000);
         dashboardScreen.setBtnProfilePage();
         String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Tap Profile Page ");
@@ -114,8 +118,8 @@ public class ProfileScreenTest {
     public void faq() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Faq on Profile Screen");
         profileScreen.setDismiss();
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back To Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setBtnFaq();
         Thread.sleep(4000);
         String btnFaqSs = Screenshot.captureScreenshot(driver, "Tap Faq Page");
@@ -127,7 +131,8 @@ public class ProfileScreenTest {
     @Test(priority = 8)
     public void kebijakanPrivasi() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Kebijakan Privasi on Profile Screen");
-        Thread.sleep(4000);
+        Thread.sleep(4000);String userOnPinPage = Screenshot.captureScreenshot(driver, "User_On_Pin_Page");
+        test.info("User On PIN Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnPinPage).build());
         pinScreen.setBtnOne();
         String setBtnOneSs = Screenshot.captureScreenshot(driver, "Tap_1");
         test.pass("Tap 1",
@@ -162,8 +167,8 @@ public class ProfileScreenTest {
     public void KetentuanPenggunaan() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Ketentuan Penggunaan on Profile Screen");
         profileScreen.setBtnBack();
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back to Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setTxtBtnKetentuanPenggunaan();
         Thread.sleep(2000);
         String btnKetentuanPenggunaan = Screenshot.captureScreenshot(driver, "Tap Ketentuan Penggunaan Button ");
@@ -174,8 +179,8 @@ public class ProfileScreenTest {
     public void KebijakanKeamanan() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Tap Halaman Kebijakan Keamanan on Profile Screen");
         profileScreen.setBtnBack();
-        String btnProfilePageSs = Screenshot.captureScreenshot(driver, "Back to Profile Page ");
-        test.pass("Back to Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(btnProfilePageSs).build());
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setTxtBtnKebijakanKeamanan();
         Thread.sleep(2000);
         String btnKebijakanKeamanan = Screenshot.captureScreenshot(driver, "Tap Kebijakan Keamanan Button ");
@@ -189,6 +194,8 @@ public class ProfileScreenTest {
     @Test(priority = 11)
     public void Logout() throws InterruptedException {
         ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] User Logout");
+        String userOnProfilePage = Screenshot.captureScreenshot(driver, "User_On_Profile_Page");
+        test.info("User On Profile Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnProfilePage).build());
         profileScreen.setBtnLogout();
         Thread.sleep(2000);
         String btnKebijakanKeamanan = Screenshot.captureScreenshot(driver, "Tap Logout");

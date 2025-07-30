@@ -98,8 +98,6 @@ public class ProfileScreen {
 //        driver.findElement(txtBtnSimpan).click();
 //    }
 
-
-
     public void swipeLogout(String direction) {
         WebElement itemElement = driver.findElement(txtAkun);
         Rectangle rectangle = itemElement.getRect();
@@ -155,7 +153,6 @@ public class ProfileScreen {
     public void setBtnLogout() {
         driver.findElement(btnLogout).click();
     }
-
 
 
 }

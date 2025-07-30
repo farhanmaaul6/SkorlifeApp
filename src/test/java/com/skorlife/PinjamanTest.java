@@ -19,7 +19,7 @@ public class PinjamanTest extends ExtentReports{
 
 
     @BeforeClass
-    public void setup() throws MalformedURLException {
+    public void setupPinjamanTest() throws MalformedURLException {
         driver = DriverSingleton.getDriver();
         pinjamanScreen = new PinjamanScreen(driver);
         profileScreen = new ProfileScreen(driver);

@@ -24,19 +24,19 @@ public class LoginScreen {
     }
 
     public void setBtnValidEnterNumber() {
-        driver.findElement(btnEnterNumber).sendKeys("836646464646");
+        driver.findElement(btnEnterNumber).sendKeys("87880624699");
     }
 
     public void setBtnInvalidEnterNumber() {
-        driver.findElement(btnEnterNumber).sendKeys(" ");
+        driver.findElement(btnEnterNumber).sendKeys("56545465465");
     }
 
     public void setBtnLessEnterNumber() {
-        driver.findElement(btnEnterNumber).sendKeys(" ");
+        driver.findElement(btnEnterNumber).sendKeys("889898988");
     }
 
     public void setBtnMoreEnterNumber() {
-        driver.findElement(btnEnterNumber).sendKeys(" ");
+        driver.findElement(btnEnterNumber).sendKeys("880808080880808");
     }
 
     public void setBtnLanjutkan() {
