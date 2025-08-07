@@ -8,9 +8,9 @@ public class PermissionScreen {
     AndroidDriver driver ;
 
     //All Permissions
-    private By btnCamera = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
-    private By btnNotification = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button");
-    private By btnLocation = AppiumBy.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
+    private By btnCamera = AppiumBy.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]");
+    private By btnNotification = AppiumBy.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]");
+    private By btnLocation = AppiumBy.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]");
     private By btnCobaLagi = AppiumBy.accessibilityId("Coba lagi");
 
     public PermissionScreen(AndroidDriver driver) {

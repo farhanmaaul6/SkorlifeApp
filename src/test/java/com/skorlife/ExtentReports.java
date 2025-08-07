@@ -32,3 +32,5 @@ public class ExtentReports {
         return extent;
     }
 }
+
+//https://skorlife.com/assets/images/Skorcard_Logo_new.svg

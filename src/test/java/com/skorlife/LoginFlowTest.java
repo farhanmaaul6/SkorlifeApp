@@ -4,7 +4,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.skorlife.screens.*;
 import io.appium.java_client.android.AndroidDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import java.net.MalformedURLException;
 
@@ -30,7 +29,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 1)
     public void setSignInUsingRegisteredNumber() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] Sign In Using a Registered Phone Number.");
+        ExtentTest test = ExtentReports.getExtent().createTest("1. [POSITIVE] Sign In Using a Registered Phone Number.");
         String userTapSkorApps = Screenshot.captureScreenshot(driver, "Tap_Skor_Apps_For_Mobile");
         test.info("Tap Skor Apps For Mobile",
                 MediaEntityBuilder.createScreenCaptureFromPath(userTapSkorApps).build());
@@ -53,14 +52,17 @@ public class LoginFlowTest extends ExtentReports {
         test.pass("Waiting for All Animations",
                 MediaEntityBuilder.createScreenCaptureFromPath(setAnimationSs).build());
         loginScreen.setBtnInputNumber();
+        Thread.sleep(2000);
         String btnInputNumberSs = Screenshot.captureScreenshot(driver, "Tap_Phone_Number_Input_Field");
         test.pass("Tap Phone Number Input Field",
                 MediaEntityBuilder.createScreenCaptureFromPath(btnInputNumberSs).build());
         loginScreen.setBtnValidEnterNumber();
+        Thread.sleep(2000);
         String btnPhoneNumberSs = Screenshot.captureScreenshot(driver, "User_Enter_a_Phone_Number");
         test.pass("User Enter a Phone Number",
                 MediaEntityBuilder.createScreenCaptureFromPath(btnPhoneNumberSs).build());
         loginScreen.setBtnLanjutkan();
+        Thread.sleep(2000);
         String btnLanjutkanSs = Screenshot.captureScreenshot(driver, "Click_Lanjutkan_Button");
         test.pass("Click Lanjutkan Button",
                 MediaEntityBuilder.createScreenCaptureFromPath(btnLanjutkanSs).build());
@@ -86,11 +88,12 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 2)
     public void SignInUsingaPhoneNumberWithanInvalidProviderCode() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[NEGATIVE] Sign In Using a Phone Number With an Invalid Provider Code.");
+        ExtentTest test = ExtentReports.getExtent().createTest("2. [NEGATIVE] Sign In Using a Phone Number With an Invalid Provider Code.");
+        Thread.sleep(4000);
         String userOnPinPage = Screenshot.captureScreenshot(driver, "User_On_Pin_Page");
         test.info("User On PIN Page",
                 MediaEntityBuilder.createScreenCaptureFromPath(userOnPinPage).build());
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         String backOnPin = Screenshot.captureScreenshot(driver, "Back_to_Animations_Page");
         test.pass("Back To Animations Page", MediaEntityBuilder.createScreenCaptureFromPath(backOnPin).build());
         pinScreen.setBtnBackToLogin();
@@ -99,6 +102,7 @@ public class LoginFlowTest extends ExtentReports {
         test.pass("Waiting for All Animations",
                 MediaEntityBuilder.createScreenCaptureFromPath(setAnimationSs).build());
         loginScreen.setBtnInputNumber();
+        Thread.sleep(2000);
         String btnInputNumberSs = Screenshot.captureScreenshot(driver, "Tap_Phone_Number_Input_Field");
         test.pass("Tap Phone Number Input Field",
                 MediaEntityBuilder.createScreenCaptureFromPath(btnInputNumberSs).build());
@@ -115,15 +119,17 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 3)
     public void SignInWithanInvalidPhoneNumberLessThanTendigits() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[NEGATIVE] Sign In Using a Phone Number Less Than 10 Digits.");
+        ExtentTest test = ExtentReports.getExtent().createTest("3. [NEGATIVE] Sign In Using a Phone Number Less Than 10 Digits.");
+        Thread.sleep(4000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
                 MediaEntityBuilder.createScreenCaptureFromPath(userOnLoginPage).build());
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         String setAnimationSs = Screenshot.captureScreenshot(driver, "Waiting_For_All_Animations");
         test.pass("Waiting for All Animations",
                 MediaEntityBuilder.createScreenCaptureFromPath(setAnimationSs).build());
         loginScreen.setBtnInputNumber();
+        Thread.sleep(2000);
         String btnInputNumberSs = Screenshot.captureScreenshot(driver, "Tap_Phone_Number_Input_Field");
         test.pass("Tap Phone Number Input Field",
                 MediaEntityBuilder.createScreenCaptureFromPath(btnInputNumberSs).build());
@@ -140,7 +146,8 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 4)
     public void SignInWithanInvalidPhoneNumberMoreThanTendigits() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[NEGATIVE] Sign In Using a Phone Number More Than 13 Digits.");
+        ExtentTest test = ExtentReports.getExtent().createTest("4. [NEGATIVE] Sign In Using a Phone Number More Than 13 Digits.");
+        Thread.sleep(3000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
                 MediaEntityBuilder.createScreenCaptureFromPath(userOnLoginPage).build());
@@ -165,7 +172,8 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 5)
     public void SignInWithInvalidPinCode() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[NEGATIVE] Sign In With Invalid PIN Code.");
+        ExtentTest test = ExtentReports.getExtent().createTest("5. [NEGATIVE] Sign In With Invalid PIN Code.");
+        Thread.sleep(3000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
                 MediaEntityBuilder.createScreenCaptureFromPath(userOnLoginPage).build());
@@ -207,7 +215,8 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 6)
     public void SignInWithInvalidPinCodeMoreThanThreeTimes() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[NEGATIVE] Sign In With Invalid PIN Code With More Than 3 Times.");
+        ExtentTest test = ExtentReports.getExtent().createTest("6. [NEGATIVE] Sign In With Invalid PIN Code With More Than 3 Times.");
+        Thread.sleep(3000);
         pinScreen.setBtnBackToLogin();
         Thread.sleep(2000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
@@ -252,7 +261,8 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 7)
     public void LinkToKetentuanLayanan() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] User Link to Ketentuan Layanan.");
+        ExtentTest test = ExtentReports.getExtent().createTest("7. [POSITIVE] User Link to Ketentuan Layanan.");
+        Thread.sleep(3000);
         pinScreen.setBtnBackToLogin();
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
@@ -276,7 +286,8 @@ public class LoginFlowTest extends ExtentReports {
     }
     @Test(priority = 8)
     public void LinkToKebijakanPrivasi() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("[POSITIVE] User Link to Kebijakan Privasi.");
+        ExtentTest test = ExtentReports.getExtent().createTest("8. [POSITIVE] User Link to Kebijakan Privasi.");
+        Thread.sleep(3000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
                 MediaEntityBuilder.createScreenCaptureFromPath(userOnLoginPage).build());

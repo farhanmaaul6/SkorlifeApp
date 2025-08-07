@@ -27,12 +27,16 @@ public class LoginScreen {
         driver.findElement(btnEnterNumber).sendKeys("87880624699");
     }
 
+    public void setBtnNewValidEnterNumber() {
+        driver.findElement(btnEnterNumber).sendKeys("888333666999");
+    }
+
     public void setBtnInvalidEnterNumber() {
         driver.findElement(btnEnterNumber).sendKeys("56545465465");
     }
 
     public void setBtnLessEnterNumber() {
-        driver.findElement(btnEnterNumber).sendKeys("889898988");
+        driver.findElement(btnEnterNumber).sendKeys("8172837");
     }
 
     public void setBtnMoreEnterNumber() {
