@@ -13,7 +13,6 @@ import sun.net.ApplicationProxy;
 import java.time.Duration;
 import java.util.Collections;
 
-//ini commanddd anehh
 public class DashboardScreen {
     AndroidDriver driver;
     //App Bar
