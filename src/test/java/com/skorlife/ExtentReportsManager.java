@@ -4,13 +4,13 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-public class ExtentReports {
+public class ExtentReportsManager {
 
     private static com.aventstack.extentreports.ExtentReports extent;
 
     @BeforeSuite
-    public void reportSetup() {
-        ExtentSparkReporter spark = new ExtentSparkReporter("target/Skorlife_Automation_Test_Report.html");
+    public static void reportSetup() {
+        ExtentSparkReporter spark = new ExtentSparkReporter("target/surefire-reports/Skorlife_Automation_Test_Report.html");
         spark.config().setReportName("Skorlife Automation Test Report");
         spark.config().setDocumentTitle("Skorlife Automation Test Report");
 
@@ -22,7 +22,7 @@ public class ExtentReports {
     }
 
     @AfterSuite
-    public void tearDown() {
+    public static void tearDown() {
         if (extent != null) {
             extent.flush();
         }

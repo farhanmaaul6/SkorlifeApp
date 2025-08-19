@@ -1,4 +1,4 @@
-package com.skorlife;
+package com.skorlife.screens.utils;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,7 +15,7 @@ public class Screenshot {
     public static String captureScreenshot(WebDriver driver, String screenshotName) {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String fileName = screenshotName + "_" + timestamp + ".png";
-        String folderPath = "target/screenshots/";
+        String folderPath = "target/surefire-reports/screenshots/";
         String filePath = folderPath + fileName;
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

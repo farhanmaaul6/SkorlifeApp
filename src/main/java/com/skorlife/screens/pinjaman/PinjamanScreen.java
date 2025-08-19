@@ -1,4 +1,4 @@
-package com.skorlife.screens;
+package com.skorlife.screens.pinjaman;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;

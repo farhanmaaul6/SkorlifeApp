@@ -1,23 +1,30 @@
-package com.skorlife.screens;
+package com.skorlife.screens.dashboard;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumExecutionMethod;
 import io.appium.java_client.android.AndroidDriver;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import sun.net.ApplicationProxy;
+
+import com.skorlife.screens.login.LoginScreen;
+import com.skorlife.screens.utils.PinScreen;
+import com.skorlife.screens.utils.Screenshot;
 
 import java.time.Duration;
 import java.util.Collections;
 
+
 public class DashboardScreen {
     AndroidDriver driver;
-    //App Bar
-    private By btnProfilePage = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]");
-    private By btnInbox = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View");
+    LoginScreen loginScreen;
+    PinScreen pinScreen;
+    ExtentTest test;
+
+
     //Tab Bar
     private By tbCard = AppiumBy.xpath("//android.view.View[@content-desc=\"Kartu\"]");
     private By tbLoan = AppiumBy.xpath("//android.view.View[@content-desc=\"Pinjaman\"]");
@@ -35,12 +42,11 @@ public class DashboardScreen {
     private By txtBtnTotalLoan = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"TOTAL PINJAMAN\n" +
             "Rp1.350.678\"]");
     private By btnCloseTotalLoan = AppiumBy.xpath("//android.view.View[@content-desc=\"Total Pinjaman\"]/android.view.View[2]");
-    private By txtBtnActiveStatus = AppiumBy.xpath("//android.view.View[@content-desc=\"31 hari\"]");
+    private By txtBtnActiveStatus = AppiumBy.xpath("//android.view.View[@content-desc=\"0 hari\"]");
     private By btnCloseActiveStatus = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Oke, tutup\"]");
     private By txtBtnSubmission = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Tidak ada pengajuan pinjaman baru atas namamu.\"]");
     private By btnCloseSubmission = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Oke, tutup\"]");
     private By btnPelajariLebihLanjut = AppiumBy.xpath("//android.view.View[@content-desc=\"Pelajari lebih lanjut\"]");
-    private By btnBackOnPinjaman = AppiumBy.xpath("//android.widget.Button");
     private By btnBeranda = AppiumBy.xpath("//android.widget.ImageView[@content-desc=\"Beranda\"]");
     private By txtLearnSkorlife = AppiumBy.xpath("//android.view.View[@content-desc=\"Apa itu Fintech? Memahami Revolusi di Dunia Keuangan\n" +
             "Skorlife di Paylater\n" +
@@ -49,13 +55,6 @@ public class DashboardScreen {
 
     public DashboardScreen(AndroidDriver driver) {
         this.driver = driver;
-    }
-    public void setBtnProfilePage() {
-        driver.findElement(btnProfilePage).click();
-    }
-
-    public void setBtnInbox() {
-        driver.findElement(btnInbox).click();
     }
 
     public void setTbForYou() {
@@ -100,10 +99,16 @@ public class DashboardScreen {
 
     public void setTxtBtn30Hari() {
         driver.findElement(txtBtnActiveStatus).click();
+        String screenshotPath = Screenshot.captureScreenshot(driver, "Clicked_30_Hari_Button");
+        test.pass("Clicked 30 Hari Button",
+                com.aventstack.extentreports.MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+   
     }
 
     public void setBtnCloseActiveStatus() {
         driver.findElement(btnCloseActiveStatus).click();
+        String screenshotPath = Screenshot.captureScreenshot(driver, "Closed_Active_Status");
+        test.info("Closed Active Status", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
     }
 
     public void setTxtBtnSubmission(){
@@ -229,6 +234,34 @@ public class DashboardScreen {
 
     public void setTxtLearnSkorlife() throws InterruptedException {
         driver.findElement(txtLearnSkorlife).click();
+    }
+
+    public void login() throws InterruptedException {
+        loginScreen.setBtnInputNumber();
+        String btnInputNumberSs = Screenshot.captureScreenshot(driver, "Tap_Phone_Number_Input_Field");
+        test.pass("Tap Phone Number Input Field",
+                MediaEntityBuilder.createScreenCaptureFromPath(btnInputNumberSs).build());
+        loginScreen.setBtnNewValidEnterNumber();
+        String btnPhoneNumberSs = Screenshot.captureScreenshot(driver, "User_Enter_a_Phone_Number");
+        test.pass("User Enter a Phone Number",
+                MediaEntityBuilder.createScreenCaptureFromPath(btnPhoneNumberSs).build());
+        loginScreen.setBtnLanjutkan();
+        String btnLanjutkanSs = Screenshot.captureScreenshot(driver, "Click_Lanjutkan_Button");
+        test.pass("Click Lanjutkan Button",
+                MediaEntityBuilder.createScreenCaptureFromPath(btnLanjutkanSs).build());
+        pinScreen.setBtnOne();
+        String setBtnOneSs = Screenshot.captureScreenshot(driver, "Tap_1");
+        test.pass("Tap 1",
+                MediaEntityBuilder.createScreenCaptureFromPath(setBtnOneSs).build());
+        pinScreen.setBtnTwo();
+        String setBtnTwoSs = Screenshot.captureScreenshot(driver, "Tap_2");
+        test.pass("Tap 2",
+                MediaEntityBuilder.createScreenCaptureFromPath(setBtnTwoSs).build());
+        pinScreen.setBtnThree();
+        String setBtnThreeSs = Screenshot.captureScreenshot(driver, "Tap_3");
+        test.pass("Tap 3",
+                MediaEntityBuilder.createScreenCaptureFromPath(setBtnThreeSs).build());
+        
     }
 
 

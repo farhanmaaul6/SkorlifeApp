@@ -1,4 +1,4 @@
-package com.skorlife.screens;
+package com.skorlife.screens.inbox;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 public class InboxScreen {
     AndroidDriver driver;
 
+    private By btnInbox = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]");
+    
     //Tab View
     private By tvNotification = AppiumBy.xpath("//android.view.View[@content-desc=\"Notifikasi\n" +
             "Tab 1 of 2\"]");
@@ -27,6 +29,10 @@ public class InboxScreen {
 
     public InboxScreen(AndroidDriver driver) {
         this.driver = driver;
+    }
+    
+    public void setBtnInbox() {
+        driver.findElement(btnInbox).click();
     }
 
     public void setTvNotification() {

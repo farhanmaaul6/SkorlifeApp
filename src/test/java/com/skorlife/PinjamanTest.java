@@ -2,17 +2,18 @@ package com.skorlife;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.skorlife.screens.DashboardScreen;
-import com.skorlife.screens.PinjamanScreen;
-import com.skorlife.screens.ProfileScreen;
+import com.skorlife.screens.dashboard.DashboardScreen;
+import com.skorlife.screens.pinjaman.PinjamanScreen;
+import com.skorlife.screens.profile.ProfileScreen;
+import com.skorlife.screens.utils.Screenshot;
+
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
-import java.time.Duration;
 
-public class PinjamanTest extends ExtentReports{
+public class PinjamanTest{
     AndroidDriver driver ;
     PinjamanScreen pinjamanScreen;
     ProfileScreen profileScreen;
@@ -29,7 +30,7 @@ public class PinjamanTest extends ExtentReports{
 
     @Test(priority = 1)
     public void ShowCardCreditPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("25. [POSITIVE] Show Credit Card Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("27. [POSITIVE] Show Credit Card Page on Pinjaman Page");
         Thread.sleep(2000);
         String userOnDashboard = Screenshot.captureScreenshot(driver,"User_On_Dashboard_Screen ");
         test.info("User on Dashboard Page", MediaEntityBuilder.createScreenCaptureFromPath(userOnDashboard).build());
@@ -45,7 +46,7 @@ public class PinjamanTest extends ExtentReports{
     }
     @Test(priority = 2)
     public void ShowPaylaterPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("26. [POSITIVE] Show Paylater Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("28. [POSITIVE] Show Paylater Page on Pinjaman Page");
         Thread.sleep(2000);
         dashboardScreen.setBtnBeranda();
         Thread.sleep(2000);
@@ -64,7 +65,7 @@ public class PinjamanTest extends ExtentReports{
 
     @Test(priority = 3)
     public void ShowKtaPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("27. [POSITIVE] Show KTA Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("29. [POSITIVE] Show KTA Page on Pinjaman Page");
         Thread.sleep(2000);
         dashboardScreen.setBtnBeranda();
         String userOnDashboard = Screenshot.captureScreenshot(driver,"User_On_Dashboard_Screen ");
@@ -82,7 +83,7 @@ public class PinjamanTest extends ExtentReports{
 
     @Test(priority = 4)
     public void ShowKkbPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("28. [POSITIVE] Show KKB Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("30. [POSITIVE] Show KKB Page on Pinjaman Page");
         Thread.sleep(2000);
         dashboardScreen.setBtnBeranda();
         String userOnDashboard = Screenshot.captureScreenshot(driver,"User_On_Dashboard_Screen ");
@@ -100,7 +101,7 @@ public class PinjamanTest extends ExtentReports{
 
     @Test(priority = 5)
     public void ShowKprPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("29. [POSITIVE] Show KPR Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("31. [POSITIVE] Show KPR Page on Pinjaman Page");
         Thread.sleep(2000);
         dashboardScreen.setBtnBeranda();
         String userOnDashboard = Screenshot.captureScreenshot(driver,"User_On_Dashboard_Screen ");
@@ -117,7 +118,7 @@ public class PinjamanTest extends ExtentReports{
 
     @Test(priority = 6)
     public void ShowOtherLoanPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("30. [POSITIVE] Show Other Loan Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("32. [POSITIVE] Show Other Loan Page on Pinjaman Page");
         Thread.sleep(2000);
         dashboardScreen.setBtnBeranda();
         String userOnDashboard = Screenshot.captureScreenshot(driver,"User_On_Dashboard_Screen ");
@@ -134,7 +135,7 @@ public class PinjamanTest extends ExtentReports{
 
     @Test(priority = 7)
     public void ShowCollectiusPage() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("31. [POSITIVE] Show Collectius Page on Pinjaman Page");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("33. [POSITIVE] Show Collectius Page on Pinjaman Page");
         Thread.sleep(2000);
         dashboardScreen.setBtnBeranda();
         String userOnDashboard = Screenshot.captureScreenshot(driver,"User_On_Dashboard_Screen ");

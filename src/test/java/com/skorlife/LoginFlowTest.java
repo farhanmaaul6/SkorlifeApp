@@ -3,11 +3,18 @@ package com.skorlife;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.skorlife.screens.*;
+import com.skorlife.screens.dashboard.DashboardScreen;
+import com.skorlife.screens.login.LoginScreen;
+import com.skorlife.screens.permission.PermissionScreen;
+import com.skorlife.screens.profile.ProfileScreen;
+import com.skorlife.screens.utils.PinScreen;
+import com.skorlife.screens.utils.Screenshot;
+
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.*;
 import java.net.MalformedURLException;
 
-public class LoginFlowTest extends ExtentReports {
+public class LoginFlowTest {
     AndroidDriver driver ;
     PermissionScreen permissionScreen;
     LoginScreen loginScreen;
@@ -29,7 +36,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 1)
     public void setSignInUsingRegisteredNumber() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("1. [POSITIVE] Sign In Using a Registered Phone Number.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("1. [POSITIVE] Sign In Using a Registered Phone Number.");
         String userTapSkorApps = Screenshot.captureScreenshot(driver, "Tap_Skor_Apps_For_Mobile");
         test.info("Tap Skor Apps For Mobile",
                 MediaEntityBuilder.createScreenCaptureFromPath(userTapSkorApps).build());
@@ -88,7 +95,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 2)
     public void SignInUsingaPhoneNumberWithanInvalidProviderCode() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("2. [NEGATIVE] Sign In Using a Phone Number With an Invalid Provider Code.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("2. [NEGATIVE] Sign In Using a Phone Number With an Invalid Provider Code.");
         Thread.sleep(4000);
         String userOnPinPage = Screenshot.captureScreenshot(driver, "User_On_Pin_Page");
         test.info("User On PIN Page",
@@ -119,7 +126,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 3)
     public void SignInWithanInvalidPhoneNumberLessThanTendigits() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("3. [NEGATIVE] Sign In Using a Phone Number Less Than 10 Digits.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("3. [NEGATIVE] Sign In Using a Phone Number Less Than 10 Digits.");
         Thread.sleep(4000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
@@ -146,7 +153,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 4)
     public void SignInWithanInvalidPhoneNumberMoreThanTendigits() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("4. [NEGATIVE] Sign In Using a Phone Number More Than 13 Digits.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("4. [NEGATIVE] Sign In Using a Phone Number More Than 13 Digits.");
         Thread.sleep(3000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
@@ -172,7 +179,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 5)
     public void SignInWithInvalidPinCode() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("5. [NEGATIVE] Sign In With Invalid PIN Code.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("5. [NEGATIVE] Sign In With Invalid PIN Code.");
         Thread.sleep(3000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",
@@ -215,7 +222,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 6)
     public void SignInWithInvalidPinCodeMoreThanThreeTimes() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("6. [NEGATIVE] Sign In With Invalid PIN Code With More Than 3 Times.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("6. [NEGATIVE] Sign In With Invalid PIN Code With More Than 3 Times.");
         Thread.sleep(3000);
         pinScreen.setBtnBackToLogin();
         Thread.sleep(2000);
@@ -261,7 +268,7 @@ public class LoginFlowTest extends ExtentReports {
 
     @Test(priority = 7)
     public void LinkToKetentuanLayanan() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("7. [POSITIVE] User Link to Ketentuan Layanan.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("7. [POSITIVE] User Link to Ketentuan Layanan.");
         Thread.sleep(3000);
         pinScreen.setBtnBackToLogin();
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
@@ -286,7 +293,7 @@ public class LoginFlowTest extends ExtentReports {
     }
     @Test(priority = 8)
     public void LinkToKebijakanPrivasi() throws InterruptedException {
-        ExtentTest test = ExtentReports.getExtent().createTest("8. [POSITIVE] User Link to Kebijakan Privasi.");
+        ExtentTest test = ExtentReportsManager.getExtent().createTest("8. [POSITIVE] User Link to Kebijakan Privasi.");
         Thread.sleep(3000);
         String userOnLoginPage = Screenshot.captureScreenshot(driver, "User_On_Login_Page");
         test.info("User On Login Page",

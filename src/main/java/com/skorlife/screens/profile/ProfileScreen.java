@@ -1,4 +1,4 @@
-package com.skorlife.screens;
+package com.skorlife.screens.profile;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -14,8 +14,7 @@ import java.util.Collections;
 public class ProfileScreen {
     AndroidDriver driver;
 
-    private By txtBtnUpdate = AppiumBy.accessibilityId("Update Info");
-    private By txtBtnSimpan= AppiumBy.accessibilityId("Simpan");
+    private By btnProfilePage = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]");
     private By btnBack = AppiumBy.xpath("//android.widget.Button");
     private By btnLogout = AppiumBy.xpath("//android.widget.Button[@content-desc=\"Keluar\"]");
     private By txtAkun = AppiumBy.xpath("//android.view.View[@content-desc=\"AKUN\"]");
@@ -36,6 +35,10 @@ public class ProfileScreen {
 
     public ProfileScreen(AndroidDriver driver) {
         this.driver = driver;
+    }
+
+    public void setBtnProfilePage() {
+        driver.findElement(btnProfilePage).click();
     }
 
     public void setBtnInformasiPribadi() {
@@ -89,14 +92,6 @@ public class ProfileScreen {
     public void setDismiss() {
         driver.findElement(dismiss).click();
     }
-
-//    public void setTxtBtnUpdate() {
-//        driver.findElement(txtBtnUpdate).click();
-//    }
-//
-//    public void setTxtBtnSimpan() {
-//        driver.findElement(txtBtnSimpan).click();
-//    }
 
     public void swipeLogout(String direction) {
         WebElement itemElement = driver.findElement(txtAkun);

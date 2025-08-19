@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite Test Calculator App Mobile">
+<suite name="Skorlife Apps Test Suite" verbose="1">
     <parameter name="url" value="http://127.0.0.1:4723"/>
-    <parameter name="deviceName" value="Y33T"/>
+    <parameter name="deviceName" value="Redmi_Note_11"/>
     <test name="Skorlife App Test">
         <classes>
             <class name="com.skorlife.Hook"/>
